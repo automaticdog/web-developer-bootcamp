@@ -56,7 +56,7 @@ function todoApp() {
             todoItems.pop(item);
             console.log("clear list loop END")
           }
-        } else if (parseInt(deleted) == NaN) {
+        } else if (isNaN(parseInt(deleted))) {
           console.log("item doesn't exist loop START")
           console.log("Looks like that item doesn't exist :/");
           console.log("item doesn't exist loop END")
