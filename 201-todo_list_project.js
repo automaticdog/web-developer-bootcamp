@@ -47,6 +47,8 @@ function todoApp() {
         }
       } else if (currentAction.toLowerCase() == "delete") {
         let deleted = prompt(`Enter index of item to delete, or enter "clear list" to delete all items:`);
+        console.log(`deleted = ${parseInt(deleted)}, index = ${todoItems.indexOf(deleted)}`)
+        console.log(`equals NaN: ${parseInt(deleted) == NaN}`)
 
         if (deleted.toLowerCase == "clear list") {
           console.log("clear list loop START")
@@ -54,7 +56,7 @@ function todoApp() {
             todoItems.pop(item);
             console.log("clear list loop END")
           }
-        } else if (deleted > todoItems.length || todoItems.indexOf(deleted) == -1) {
+        } else if (parseInt(deleted) == NaN) {
           console.log("item doesn't exist loop START")
           console.log("Looks like that item doesn't exist :/");
           console.log("item doesn't exist loop END")
