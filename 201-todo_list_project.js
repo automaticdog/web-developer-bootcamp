@@ -22,7 +22,7 @@
 
 function todoApp() {
   let isActive = true;
-  const todoItems = [];
+  const todoItems = ["test1", "test2", "test3", "test4"];
   let validActions = ["new", "list", "delete", "quit"]
   while (isActive === true) {
     let currentAction = prompt(`What would you like to do? You can try:
@@ -49,13 +49,19 @@ function todoApp() {
         let deleted = prompt(`Enter index of item to delete, or enter "clear list" to delete all items:`);
 
         if (deleted.toLowerCase == "clear list") {
+          console.log("clear list loop START")
           for (let item in todoItems) {
             todoItems.pop(item);
+            console.log("clear list loop END")
           }
-        } else if (todoItems.indexOf(deleted) == -1) {
+        } else if (deleted > todoItems.length || todoItems.indexOf(deleted) == -1) {
+          console.log("item doesn't exist loop START")
           console.log("Looks like that item doesn't exist :/");
+          console.log("item doesn't exist loop END")
         } else {
+          console.log("delete single item loop START")
           todoItems.pop(parseInt(todoItems[deleted]));
+          console.log("delete single item loop END")
         }
       } else if (currentAction.toLowerCase() == "quit") {
         console.log("Ok, quitting the app!")
