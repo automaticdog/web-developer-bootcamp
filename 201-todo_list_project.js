@@ -22,7 +22,7 @@
 
 function todoApp() {
   let isActive = true;
-  const todoItems = ["test1", "test2", "test3", "test4"];
+  const todoItems = [];
   let validActions = ["new", "list", "delete", "quit"]
   while (isActive === true) {
     let currentAction = prompt(`What would you like to do? You can try:
@@ -51,19 +51,13 @@ function todoApp() {
         console.log(`equals NaN: ${parseInt(deleted) == NaN}`)
 
         if (deleted.toLowerCase == "clear list") {
-          console.log("clear list loop START")
           for (let item in todoItems) {
             todoItems.pop(item);
-            console.log("clear list loop END")
           }
         } else if (isNaN(parseInt(deleted))) {
-          console.log("item doesn't exist loop START")
           console.log("Looks like that item doesn't exist :/");
-          console.log("item doesn't exist loop END")
         } else {
-          console.log("delete single item loop START")
-          todoItems.pop(parseInt(todoItems[deleted]));
-          console.log("delete single item loop END")
+          todoItems.splice(parseInt(todoItems[deleted]), 1);
         }
       } else if (currentAction.toLowerCase() == "quit") {
         console.log("Ok, quitting the app!")
