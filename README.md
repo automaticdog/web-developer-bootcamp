@@ -2,17 +2,17 @@
 
 ## Strings:
 
-#### `substr(firstIndex, lastIndex)`
+### `substr(firstIndex, lastIndex)`
   - returns all characters from `firstIndex` to `lastIndex`, INCLUDING `lastIndex`
   - `lastIndex` is optional
-#### `slice(firstIndex, lastIndex)`
+### `slice(firstIndex, lastIndex)`
   - returns all characters from `firstIndex` to `lastIndex`
   - the character at `lastIndex` is NOT included!
   - `lastIndex` is optional
 
 ## Arrays:
 
-#### for-in vs for-of
+### for-in vs for-of
 - syntax:
   - `for (let day in days) {}` -- VS -- `for (let day of days) {}`
   - **for-in:** variable = the actual index of the item being iterated, i.e. for an array `["mon", "tues", "wed"]`, returning `day` will return 0, 1, and 2 respectively
