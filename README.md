@@ -48,3 +48,9 @@
 ## Adding elements
 - if you're adding an element, you'll need to create it first with `createElement("[ELEMENT_TYPE]")`
 - `apendChild`, `append`, `prepend`, `insertAdjacentElement("position", [ELEMENT])`
+
+## Removing elements
+- `remove` vs `removeChild`
+  - when appended to a node, `remove()` will remove the node it's being called on
+    - DOES NOT WORK IN **IE**
+  - with `removeChild`, you have to call the method on the _parent_ of the node/element you want to remove, then specify the child being removed as an argument to the method
