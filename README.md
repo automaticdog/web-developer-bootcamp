@@ -54,3 +54,47 @@
   - when appended to a node, `remove()` will remove the node it's being called on
     - DOES NOT WORK IN **IE**
   - with `removeChild`, you have to call the method on the _parent_ of the node/element you want to remove, then specify the child being removed as an argument to the method
+
+## condole.dir()
+- get info about an object?
+
+## `this` inside an event listener
+- when used inside a function called by an event listener, `this` refers to the element the event listener is attached to
+- primary advantage: helps code not be repetitive when reusing the same function in multiple places - without it, you would need a separate function for each element the function is called in an event listener for
+  - example: `button.addEventListener("click", printText}) // function printText() { this.innerText }`
+
+## The Event Object
+
+### event object
+- contains info about an event fired/captured by an event listener
+- refer to it by passing a placeholder i.e. 'evt', 'e' or 'event' to the function in your event listener
+  - example: `button.addEventListener("click", function(event) { console.log(event) })`
+
+### event.preventDefault()
+- prevents the default behavior triggered by a given event
+- usually used with form submissions - where default behavior is to redirect to the submission POST route path
+  - using `e.preventDefault()` allows single-page workflows with forms - can grab & use data that would otherwise be lost when the page reroutes
+
+### input.value property
+- gets the current value entered into an input
+
+### form.reset()
+- clears input fields in a form
+
+### `change` event
+- fires whenever the user _blurs_ (leaves/unfocuses) the input field
+
+### `input` event
+- fires as soon as any change is made to the input value
+
+## Event Bubbling
+- triggering an event on an element inside of another element(s) also triggers all events associated with the higher-level/parent elements
+
+### `event.stopPropagation()`
+- when called on an event, `stopPropagation()` prevents event bubbling - events will only be triggered at the level of the specific element being interacted
+
+## Event Delegation
+- event listener won't be applied to elements created _after_ the event listener was called; i.e., if an element is present on page in the initial markup, or is created dynamically prior to the event listener being declared, then that element will have the event listener added to it - but if an element is created dynamically AFTER the event listener is declared, the event listener won't be applied
+- the solution is event delegation
+  - apply an event listener to the _parent_ element that is going to have new elements dynamically created within it - the event listener will then apply down to the child element
+  - use `event.target` to refer to the specific child element that was interacted

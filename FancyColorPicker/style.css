@@ -1,0 +1,25 @@
+h1 {
+  text-align: center;
+}
+
+#container {
+  display: flex;
+  justify-content: center;
+}
+
+#color-card {
+  width: 300px;
+  height: 400px;
+  border: 2px solid #ababab;
+  padding: 5px;
+  border-radius: 10px;
+}
+
+button {
+  margin-top: 15px;
+}
+
+#swatch {
+  height: -webkit-fill-available;
+  width: -webkit-fill-available;
+}

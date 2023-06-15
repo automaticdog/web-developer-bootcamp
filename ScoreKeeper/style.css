@@ -1,0 +1,77 @@
+body {
+  font-family: Helvetica, Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+}
+
+div {
+  display: flexbox;
+  align-content: center;
+}
+
+h1 {
+  font-size: 1.25em;
+  margin: 0px;
+  color: #000;
+}
+
+p {
+  font-size: .8em;
+  color: rgb(102, 102, 102);
+}
+
+p.score-display {
+  color: #000;
+  font-size: 2em;
+  font-weight: bold;
+  margin: 10px 0;
+}
+
+.container {
+  padding: 20px 10px 10px 10px;
+  box-shadow: 0 0 5px #d4d4d4;
+}
+
+.btn-row {
+  display: flex;
+  gap: 2px;
+  
+}
+
+.btn-row .button {
+  color: #fff;
+  display: flexbox;
+  border-radius: 2px;
+  padding: 5px 10px;
+  margin-top: 10px;
+  flex-grow: 1;
+  text-align: center;
+}
+
+.disabled {
+  pointer-events: none;
+}
+
+#select {
+  border-radius: 10px;
+}
+
+#player-one {
+  background-color: rgb(88 201 255);
+}
+
+#player-two {
+  background-color: rgb(69 234 162);
+}
+
+#reset {
+  background-color: rgb(243, 85, 125);
+}
+
+.winner {
+  color: green;
+}
+
+.loser {
+  color: red;
+}
