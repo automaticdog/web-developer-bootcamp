@@ -51,7 +51,7 @@ enableButtons();
 
 // set maxRounds value when user selects a score to play to
 input.addEventListener("change", () => {
-  // console.log('input selected')
+  console.log('input selected')
   maxRounds = input.value;
 })
 
@@ -82,7 +82,7 @@ function compareScores() {
     setWinner(playerOneDisplay);
     setLoser(playerTwoDisplay);
   } else {
-    setLoser(playerTwoDisplay);
+    setLoser(playerOneDisplay);
     setWinner(playerTwoDisplay);
   }
   disableButtons();
@@ -100,9 +100,11 @@ resetBtn.addEventListener("click", function() {
 
 function resetGame() {
   console.log("resetting game!")
-  maxRounds = 1;
+  maxRounds = input.value;
   playerOneScore = 0;
   playerTwoScore = 0;
+  playerOneDisplay.classList = '';
+  playerTwoDisplay.classList = '';
   updateScores();
   enableButtons();
 }
