@@ -25,25 +25,25 @@ function updateScores() {
 // 1) updated that player's displayed score value
 // 2) check if either score == maxScore
 
+addPlayerOne.addEventListener("click", () => {
+  // console.log("player 1 clicked!")
+  playerOneScore += 1;
+  updateScores();
+  checkScore();
+})
+
+addPlayerTwo.addEventListener("click", () => {
+  // console.log("player 2 clicked!")
+  playerTwoScore += 1;
+  updateScores();
+  checkScore();
+})
+
 function enableButtons() {
   console.log("enabling buttons!")
 
   addPlayerOne.classList.remove("disabled");
   addPlayerTwo.classList.remove("disabled");
-
-  addPlayerOne.addEventListener("click", () => {
-    // console.log("player 1 clicked!")
-    playerOneScore += 1;
-    updateScores();
-    checkScore();
-  })
-  
-  addPlayerTwo.addEventListener("click", () => {
-    // console.log("player 2 clicked!")
-    playerTwoScore += 1;
-    updateScores();
-    checkScore();
-  })
 }
 
 updateScores();
