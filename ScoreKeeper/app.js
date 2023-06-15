@@ -16,38 +16,11 @@ const playerOneDisplay = document.querySelector('#player1');
 const playerTwoDisplay = document.querySelector('#player2');
 
 function updateScores() {
-  console.log("updating scores! " + playerOneScore)
   playerOneDisplay.innerText = playerOneScore;
   playerTwoDisplay.innerText = playerTwoScore;
 }
 
-// WHEN A PLAYER BUTTON IS CLICKED:
-// 1) updated that player's displayed score value
-// 2) check if either score == maxScore
-
-function enableButtons() {
-  console.log("enabling buttons!")
-
-  addPlayerOne.classList.remove("disabled");
-  addPlayerTwo.classList.remove("disabled");
-
-  addPlayerOne.addEventListener("click", () => {
-    // console.log("player 1 clicked!")
-    playerOneScore += 1;
-    updateScores();
-    checkScore();
-  })
-  
-  addPlayerTwo.addEventListener("click", () => {
-    // console.log("player 2 clicked!")
-    playerTwoScore += 1;
-    updateScores();
-    checkScore();
-  })
-}
-
 updateScores();
-enableButtons();
 
 // set maxRounds value when user selects a score to play to
 input.addEventListener("change", () => {
@@ -55,37 +28,41 @@ input.addEventListener("change", () => {
   maxRounds = input.value;
 })
 
-function disableButtons() {
-  console.log("disabling buttons!")
-  addPlayerOne.classList.toggle("disabled");
-  addPlayerTwo.classList.toggle("disabled");
-}
+// WHEN A PLAYER BUTTON IS CLICKED:
+// 1) updated that player's displayed score value
+// 2) check if either score == maxScore
 
-function checkScore() {
-  console.log("checking score!")
-  if (playerOneScore == maxRounds || playerTwoScore == maxRounds) {
-    compareScores();
-  }
-}
+addPlayerOne.addEventListener("click", () => {
+  // console.log("player 1 clicked!")
+  playerOneScore += 1;
+  updateScores();
+  checkScore();
+})
 
-function setWinner(player) {
-  player.classList.add('winner');
-}
-
-function setLoser(player) {
-  player.classList.add('loser');
-}
+addPlayerTwo.addEventListener("click", () => {
+  // console.log("player 2 clicked!")
+  playerTwoScore += 1;
+  updateScores();
+  checkScore();
+})
 
 function compareScores() {
   console.log('comparing scores');
   if (playerOneScore > playerTwoScore) {
-    setWinner(playerOneDisplay);
-    setLoser(playerTwoDisplay);
+    console.log("first condition")
+    playerOneDisplay.classList.add('winner');
+    playerTwoDisplay.classList.add('loser');
+    console.log(playerOneDisplay.classList)
   } else {
-    setLoser(playerTwoDisplay);
-    setWinner(playerTwoDisplay);
+    playerTwoDisplay.classList.add('winner');
+    playerTwoDisplay.classList.add('loser');
   }
-  disableButtons();
+}
+
+function checkScore() {
+  if (playerOneScore == maxRounds || playerTwoScore == maxRounds) {
+    compareScores();
+  }
 }
 
 
@@ -99,10 +76,8 @@ resetBtn.addEventListener("click", function() {
 // 2) reset maxScore input to 1
 
 function resetGame() {
-  console.log("resetting game!")
   maxRounds = 1;
   playerOneScore = 0;
   playerTwoScore = 0;
   updateScores();
-  enableButtons();
 }
