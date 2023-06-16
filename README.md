@@ -98,3 +98,17 @@
 - the solution is event delegation
   - apply an event listener to the _parent_ element that is going to have new elements dynamically created within it - the event listener will then apply down to the child element
   - use `event.target` to refer to the specific child element that was interacted
+
+  ## The Call Stack
+
+  ## WebAPIs
+
+  ## Callback Hell™
+
+  ## Promises
+
+  ### Working with Promises
+
+  ### Creating Promises
+
+  ## Async Functions
