@@ -99,16 +99,21 @@
   - apply an event listener to the _parent_ element that is going to have new elements dynamically created within it - the event listener will then apply down to the child element
   - use `event.target` to refer to the specific child element that was interacted
 
-  ## The Call Stack
+## The Call Stack
+- mechanism that allows JS to keep track of its current place when calling multiple functions
+- LIFO order until the innermost function returns something that is _not_ another function call
 
-  ## WebAPIs
+## WebAPIs
+- JS is single-threaded, so it can only ever be handling (running) one line of code at once
+- call stack recognizes certain special WebAPI functions, e.g. setTimeout, and passes those off to the _browser_ to run - freeing up JS to run the next line
+- once function is complete on the browser's end, it gets passed to the callback queue, and then sent back to the call stack and placed on top
 
-  ## Callback Hell™
+## Callback Hell™
 
-  ## Promises
+## Promises
 
-  ### Working with Promises
+### Working with Promises
 
-  ### Creating Promises
+### Creating Promises
 
-  ## Async Functions
+## Async Functions
