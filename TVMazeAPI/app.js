@@ -2,13 +2,27 @@ const form = document.querySelector("form");
 
 const getTvShow = async (query) => {
   const res = await axios.get(`https://api.tvmaze.com/search/shows?q=${query}`)
-  await console.log(res.data)
+  const results = await res.data
+  // console.log(results);
+  return results;
 }
 
-form.addEventListener("submit", function (e) {
+function renderShows(data) {
+  console.log(data)
+  console.log(data[0]);
+  for (let i = 0; i < data.length; i++) {
+    console.log(data[i].show.name);
+  }
+  // data.forEach(show => {
+  //   console.log(show.name)
+  // });
+}
+
+form.addEventListener("submit", async function (e) {
   e.preventDefault();
   console.log("Submitted!")
   const searchTerm = form.elements.query.value;
 
-  getTvShow(searchTerm)
+  const shows = await getTvShow(searchTerm)
+  renderShows(shows)
 })
