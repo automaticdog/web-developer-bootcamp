@@ -11,18 +11,29 @@ function renderShows(data) {
   console.log(data)
   console.log(data[0]);
   for (let i = 0; i < data.length; i++) {
-    console.log(data[i].show.name);
+    // console.log(data[i].show.name);
+    printShow(data[i].show.name)
+    printShowImage(data[i].show.image["medium"], data[i].show.name);
   }
-  // data.forEach(show => {
-  //   console.log(show.name)
-  // });
 }
 
 form.addEventListener("submit", async function (e) {
   e.preventDefault();
-  console.log("Submitted!")
+  // console.log("Submitted!")
   const searchTerm = form.elements.query.value;
-
   const shows = await getTvShow(searchTerm)
   renderShows(shows)
 })
+
+function printShow(name) {
+  const li = document.createElement("li");
+  li.innerText = name;
+  document.body.appendChild(li);
+}
+
+function printShowImage(url, name) {
+  const img = document.createElement("img");
+  img.setAttribute("src", url);
+  img.setAttribute("alt", `Show poster for ${name}`)
+  document.body.appendChild(img);
+}
