@@ -1,9 +1,7 @@
-const form = document.querySelector("form");
+const form = document.getElementById("form");
 
 const getTvShow = async (query) => {
-  const res = await axios.get(`https://api.tvmaze.com/search/shows?q=${query}`)
-  const results = await res.data
-  return results;
+
 }
 
 function renderShows(data) {
@@ -17,9 +15,17 @@ function renderShows(data) {
 
 form.addEventListener("submit", async function (e) {
   e.preventDefault();
+  console.log("prevented!")
   const searchTerm = form.elements.query.value;
-  const shows = await getTvShow(searchTerm)
-  renderShows(shows)
+  const config = {
+    params: {
+      q: searchTerm
+    }
+  }
+  const res = await axios.get(`https://api.tvmaze.com/search/shows?`, config);
+  const results = await res.data;
+  // const shows = await getTvShow(searchTerm)
+  renderShows(results);
 })
 
 function printShow(name) {
