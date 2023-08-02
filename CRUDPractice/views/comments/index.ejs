@@ -10,8 +10,9 @@
   <body>
     <h1>Comments</h1>
     <ul>
-      <% for(let comment of comments) { %>
-        <li><b><%= comment.username %></b> - "<%= comment.comment %>"</li>
+      <% for(let c of comments) { %>
+        <li><b><%= c.username %></b> - "<%= c.comment %>"</li>
+        <a href="/comments/<%= c.id %>">details</a>
       <% }; %>
     </ul>
 
@@ -27,6 +28,5 @@
       </div>
       <button>Submit</button>
     </form>
-	<script src="index.js"></script>
   </body>
 </html>

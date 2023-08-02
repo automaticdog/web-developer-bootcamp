@@ -1,29 +1,30 @@
 const express = require('express');
 const ejs = require('ejs')
 const path = require('path');
+const { v4: uuidv4 } = require('uuid')
 const app = express();
 
 const comments = [
   {
-    id: 1,
+    id: uuidv4(),
     username: "Todd",
     comment: "lolol that is sooo funny!",
     avatar: "/images/user1.png"
   },
   {
-    id: 2,
+    id: uuidv4(),
     username: "Becky",
     comment: "I love this, omg!!",
     avatar: "/images/user2.png"
   },
   {
-    id: 3,
+    id: uuidv4(),
     username: "sk8erboi",
     comment: "delete ur account, n00b!!!!!!",
     avatar: "/images/user3.png"
   },
   {
-    id: 4,
+    id: uuidv4(),
     username: "onlysayswoof",
     comment: "woof woof woof",
     avatar: "/images/user4.png"
@@ -53,32 +54,26 @@ app.get('/comments/new', (req, res) => {
 app.post('/comments/new', (req, res) => {
   const { username, comment } = req.body;
   const newComment = { 
-    "id": comments.length + 1,
+    "id": uuidv4(),
     username,
-    comment 
+    comment,
+    "avatar": null
   }
+  console.log(newComment.id)
   comments.push(newComment)
   res.redirect('/comments')
 })
 
 app.get('/comments/:id', (req, res) => {
   const id = req.params.id;
-  const comment = comments.find(c => c.id === parseInt(id))
+  const comment = comments.find(c => c.id === id)
   res.render('comments/show', { comment });
 })
 
-
-
-// app.get('/tacos', (req, res) => {
-//   res.send('GET request sent!');
-// })
-
-// app.post('/tacos', (req, res) => {
-//   const { meat, qty } = req.body;
-//   res.send(`You ordered: ${qty} ${meat} tacos`);
-//   console.log(req.body)
-// })
-
-// app.get('/', (req, res) => {
-//   res.sendFile(path.join(__dirname, '/getpost.html'))
-// })
+app.patch('/comments/:id', (req, res) => {
+  const id = req.params.id;
+  const comment = comments.find(c => c.id === id);
+  const newComment = req.body.comment;
+  comment.comment = newComment;
+  res.redirect("/comments")
+})
