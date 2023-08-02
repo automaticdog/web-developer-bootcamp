@@ -4,4 +4,25 @@ body {
 
 form div {
   margin: 10px auto;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+form label {
+  flex-basis: 100%;
+}
+
+span.username {
+  font-weight: bold;
+  font-size: .8rem;
+}
+
+div.comment {
+  display: flex;
+  align-items: center;
+}
+
+div.comment img {
+  margin-right: 10px;
+  max-width: 2rem;
 }

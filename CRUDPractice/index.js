@@ -5,20 +5,28 @@ const app = express();
 
 const comments = [
   {
+    id: 1,
     username: "Todd",
-    comment: "lolol that is sooo funny!"
+    comment: "lolol that is sooo funny!",
+    avatar: "/images/user1.png"
   },
   {
+    id: 2,
     username: "Becky",
-    comment: "I love this, omg!!"
+    comment: "I love this, omg!!",
+    avatar: "/images/user2.png"
   },
   {
+    id: 3,
     username: "sk8erboi",
-    comment: "delete ur account LMFAOOOO. this is pathetic"
+    comment: "delete ur account, n00b!!!!!!",
+    avatar: "/images/user3.png"
   },
   {
+    id: 4,
     username: "onlysayswoof",
-    comment: "woof woof woof"
+    comment: "woof woof woof",
+    avatar: "/images/user4.png"
   }
 ]
 
@@ -44,12 +52,19 @@ app.get('/comments/new', (req, res) => {
 
 app.post('/comments/new', (req, res) => {
   const { username, comment } = req.body;
-  // res.send(`${username}, ${comment}`)
-  const newComment = {
-    "username": username,
-    "comment": comment
+  const newComment = { 
+    "id": comments.length + 1,
+    username,
+    comment 
   }
   comments.push(newComment)
+  res.redirect('/comments')
+})
+
+app.get('/comments/:id', (req, res) => {
+  const id = req.params.id;
+  const comment = comments.find(c => c.id === parseInt(id))
+  res.render('comments/show', { comment });
 })
 
 
